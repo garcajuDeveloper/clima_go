@@ -3,8 +3,8 @@ import React from 'react';
 const Header = ({title}) => {
     return ( 
         <nav>
-            <div className = "nav-wrapper light-blue darken-2">
-                <a href="#!" className="brand-logo center">{title}</a>
+            <div className = "nav-wrapper nav-container">
+                <a href="#!" className="nav-container-link">{title}</a>
             </div>
         </nav>
      );

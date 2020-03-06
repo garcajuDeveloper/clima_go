@@ -35,9 +35,19 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   color: white;
 }
 
-.contenedor-form {
+.nav-container{
+  background-color: #c9bc1f;
+  text-align: center;
+}
+
+.nav-container-link{
+  font-size: 3rem;
+  color: black;
+}
+
+.container-form {
   padding: 3rem 0 1px 0;
-  background-color: #03a9f4;
+  background-color: #ffee58;
 }
 .mensaje {
   text-align: center;
