@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import  {
             CITY_LABEL,
             COUNTRY_LABEL,
@@ -46,17 +46,33 @@ import  {
         } from '../../resources/Strings'
 
 const Form = () => {
+
+    const [search, setSearch] = useState({
+        city: '',
+        country: ''
+    });
+    const { city, country} = search;
+    const handleChange = event => {
+        setSearch({
+            ...search,
+            [event.target.name]: event.target.value
+        });
+    }
+
+
     return ( 
         <form>
-            <div class="input-field col s9">
-                <input id="city" type="text" name = "city" />
+            <div class="input-field col s12">
+                <input id="city" type="text" name = "city" value = {city} onChange = {handleChange}/>
                 <label htmlFor="city">{CITY_LABEL}</label>
             </div>
 
-            <div class="input-field col s9">
+            <div class="input-field col s12">
                 <select
                     name = "country"
                     id = "country"
+                    value = {country}
+                    onChange = {handleChange}
                 >
                     <option value="">{SELECT_OPTION}</option>
                     <option value={SPAIN_CODE}>{SPAIN_TEXT}</option>
