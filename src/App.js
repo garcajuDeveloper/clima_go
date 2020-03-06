@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
-import Header from './components/header/Header'
+import Header from './components/header/Header';
+import Form from './components/form/Form';
 import 'materialize-css/dist/css/materialize.min.css';
 import  {
           HEADER_TITLE
@@ -16,7 +17,7 @@ function App() {
       <div className = "container-form">
         <div className = "container">
           <div className = "row">
-            <div className = "col m6 s12">1</div>
+            <div className = "col m6 s12"><Form></Form></div>
             <div className = "col m6 s12">2</div>
           </div>
         </div>
