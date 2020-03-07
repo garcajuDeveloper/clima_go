@@ -7,7 +7,9 @@ import Header from './components/header/Header';
 import Form from './components/form/Form';
 import 'materialize-css/dist/css/materialize.min.css';
 import  {
-          HEADER_TITLE
+          HEADER_TITLE,
+          BASE_URL,
+          APPID
         } from './resources/Strings';
 
 function App() {
@@ -16,11 +18,21 @@ function App() {
     city: '',
     country: ''
   });
+  const [requestForm, setRequestForm] = useState(false);
   const {city, country } = search;
 
   useEffect(() => {
-    console.log(city)
-  },[city, country]);
+    const requestAPI = async () => {
+      if(requestForm){
+        const url = `${BASE_URL}${city},${country}&appid=${APPID}`;
+
+        const response = await fetch(url);
+        const jsonResolved = await response.json();   
+        console.log(jsonResolved);  
+      }
+    }
+    requestAPI();
+  },[requestForm]);
 
   return (
     <Fragment>
@@ -32,7 +44,13 @@ function App() {
       <div className = "container-form">
         <div className = "container">
           <div className = "row">
-            <div className = "col m6 s12"><Form search = {search} setSearch = {setSearch}></Form></div>
+            <div className = "col m6 s12">
+              <Form 
+                search = {search}
+                setSearch = {setSearch}
+                setRequestForm = {setRequestForm}
+                />
+            </div>
             <div className = "col m6 s12">2</div>
           </div>
         </div>

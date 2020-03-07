@@ -47,7 +47,7 @@ import  {
             SUBMITT_TEXT
         } from '../../resources/Strings'
 
-const Form = ({search, setSearch}) => {
+const Form = ({search, setSearch, setRequestForm}) => {
     const [error, setError] = useState(false);
 
     const { city, country } = search;
@@ -65,7 +65,8 @@ const Form = ({search, setSearch}) => {
             setError(true);
         }else{
             setError(false);
-        }    
+        } 
+        setRequestForm(true);
     }
 
 
