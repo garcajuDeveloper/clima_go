@@ -42,3 +42,5 @@ export const SWEDEN_TEXT = "Suecia";
 export const NORWAY_TEXT = "Noruega";
 export const FINLAND_TEXT = "Finlandia";
 export const TURKEY_TEXT = "Turquía";
+export const EMPTY_FIELDS_WARNING = "Información incompleta"
+export const SUBMITT_TEXT = "Buscar";

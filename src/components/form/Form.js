@@ -42,16 +42,16 @@ import  {
             SWEDEN_TEXT,
             NORWAY_TEXT,
             FINLAND_TEXT,
-            TURKEY_TEXT
+            TURKEY_TEXT,
+            EMPTY_FIELDS_WARNING,
+            SUBMITT_TEXT
         } from '../../resources/Strings'
 
-const Form = () => {
+const Form = ({search, setSearch}) => {
+    const [error, setError] = useState(false);
 
-    const [search, setSearch] = useState({
-        city: '',
-        country: ''
-    });
-    const { city, country} = search;
+    const { city, country } = search;
+
     const handleChange = event => {
         setSearch({
             ...search,
@@ -59,15 +59,27 @@ const Form = () => {
         });
     }
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        if(city.trim() === '' || country.trim() === ''){
+            setError(true);
+        }else{
+            setError(false);
+        }    
+    }
+
 
     return ( 
-        <form>
-            <div class="input-field col s12">
+        <form
+            onSubmit = {handleSubmit}
+        >
+            {(error) ? <p className = "red accent-2 error">{EMPTY_FIELDS_WARNING}</p> : null }
+            <div className="input-field col s12">
                 <input id="city" type="text" name = "city" value = {city} onChange = {handleChange}/>
                 <label htmlFor="city">{CITY_LABEL}</label>
             </div>
 
-            <div class="input-field col s12">
+            <div className="input-field col s12">
                 <select
                     name = "country"
                     id = "country"
@@ -98,7 +110,9 @@ const Form = () => {
                 </select>   
                 <label htmlFor="country">{COUNTRY_LABEL}</label>
             </div> 
-
+            <div className = "input-field col s12">
+                <input type = "submit" value = {SUBMITT_TEXT} className = "waves-effect waves-light btn-block btn-large yellow accent-4"/>
+            </div>
         </form>
      );
 }

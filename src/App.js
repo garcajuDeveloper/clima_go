@@ -1,4 +1,8 @@
-import React, {Fragment} from 'react';
+import React, {
+                useState,
+                useEffect,
+                Fragment
+              } from 'react';
 import Header from './components/header/Header';
 import Form from './components/form/Form';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -7,6 +11,17 @@ import  {
         } from './resources/Strings';
 
 function App() {
+
+  const [search, setSearch] = useState({
+    city: '',
+    country: ''
+  });
+  const {city, country } = search;
+
+  useEffect(() => {
+    console.log(city)
+  },[city, country]);
+
   return (
     <Fragment>
       <Header
@@ -17,7 +32,7 @@ function App() {
       <div className = "container-form">
         <div className = "container">
           <div className = "row">
-            <div className = "col m6 s12"><Form></Form></div>
+            <div className = "col m6 s12"><Form search = {search} setSearch = {setSearch}></Form></div>
             <div className = "col m6 s12">2</div>
           </div>
         </div>
