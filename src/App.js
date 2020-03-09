@@ -6,14 +6,19 @@ import React, {
 import Header from './components/header/Header';
 import Form from './components/form/Form';
 import Weather from './components/weather/Weather';
+import Error from './components/error/Error';
 import 'materialize-css/dist/css/materialize.min.css';
 import  {
           HEADER_TITLE,
           BASE_URL,
-          APPID
+          APPID,
+          COD_ERROR,
+          CITY_NOT_FOUND_ERROR
         } from './resources/Strings';
 
 function App() {
+
+  let conditionalComponent;
 
   const [search, setSearch] = useState({
     city: '',
@@ -21,6 +26,8 @@ function App() {
   });
   const [requestForm, setRequestForm] = useState(false);
   const [cityResulted, setCityResulted] = useState({});
+  const [error, setError] = useState(false);
+  
 
   const {city, country } = search;
 
@@ -33,12 +40,17 @@ function App() {
         const response = await fetch(url);
         const jsonResolved = await response.json();   
         setCityResulted(jsonResolved);
+   
+        (jsonResolved.cod === COD_ERROR) ? setError(true) : setError(false);
 
-        setRequestForm(false);  
+        setRequestForm(false);
       }
     }
     requestAPI();
   },[requestForm]);
+
+  (error) ? conditionalComponent = <Error message = {CITY_NOT_FOUND_ERROR} /> : 
+    conditionalComponent =  <Weather cityResulted = {cityResulted} /> ;
 
   return (
     <Fragment>
@@ -58,9 +70,7 @@ function App() {
                 />
             </div>
             <div className = "col m6 s12">
-              <Weather
-                cityResulted = {cityResulted}
-              />
+              {conditionalComponent}
             </div>
           </div>
         </div>

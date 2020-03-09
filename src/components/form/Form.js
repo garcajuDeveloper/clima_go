@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Error from '../error/Error';
 import  {
             CITY_LABEL,
             COUNTRY_LABEL,
@@ -74,7 +75,7 @@ const Form = ({search, setSearch, setRequestForm}) => {
         <form
             onSubmit = {handleSubmit}
         >
-            {(error) ? <p className = "red accent-2 error">{EMPTY_FIELDS_WARNING}</p> : null }
+            {(error)? <Error message={EMPTY_FIELDS_WARNING} /> : null}
             <div className="input-field col s12">
                 <input id="city" type="text" name = "city" value = {city} onChange = {handleChange}/>
                 <label htmlFor="city">{CITY_LABEL}</label>

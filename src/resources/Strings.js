@@ -46,3 +46,5 @@ export const EMPTY_FIELDS_WARNING = "Información incompleta"
 export const SUBMITT_TEXT = "Buscar";
 export const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
 export const APPID = "0b966bd4c826bf6a42b2a1ef8e41ab63";
+export const COD_ERROR = "404";
+export const CITY_NOT_FOUND_ERROR = "No se encontró ciudad con ese nombre";
