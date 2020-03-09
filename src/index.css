@@ -66,18 +66,18 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   text-align: center;
   text-emphasis: left;
 }
-.card-panel h2 {
+.card-panel h3 {
+  margin-left: 1em;
   font-size: 1.6rem;
-  text-align: center;
 }
 .card-panel p {
   text-align: center;
   font-size: 1.4rem;
 }
-.temperatura {
+.temp {
   font-size: 4rem!important
 }
-.temperatura span {
+.temp span {
   font-size: 2rem!important;
   vertical-align: super;
 }

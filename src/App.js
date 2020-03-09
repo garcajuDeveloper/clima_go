@@ -5,6 +5,7 @@ import React, {
               } from 'react';
 import Header from './components/header/Header';
 import Form from './components/form/Form';
+import Weather from './components/weather/Weather';
 import 'materialize-css/dist/css/materialize.min.css';
 import  {
           HEADER_TITLE,
@@ -19,6 +20,8 @@ function App() {
     country: ''
   });
   const [requestForm, setRequestForm] = useState(false);
+  const [cityResulted, setCityResulted] = useState({});
+
   const {city, country } = search;
 
   useEffect(() => {
@@ -29,7 +32,8 @@ function App() {
 
         const response = await fetch(url);
         const jsonResolved = await response.json();   
-        console.log(jsonResolved);
+        setCityResulted(jsonResolved);
+
         setRequestForm(false);  
       }
     }
@@ -53,7 +57,11 @@ function App() {
                 setRequestForm = {setRequestForm}
                 />
             </div>
-            <div className = "col m6 s12">2</div>
+            <div className = "col m6 s12">
+              <Weather
+                cityResulted = {cityResulted}
+              />
+            </div>
           </div>
         </div>
       </div>
