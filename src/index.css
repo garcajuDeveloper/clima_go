@@ -67,10 +67,11 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   text-emphasis: left;
 }
 .card-panel h3 {
-  margin-left: 1em;
+  margin-left: 1.5em;
   font-size: 1.6rem;
 }
 .card-panel p {
+  margin: .75em 0 0 0 ;
   text-align: center;
   font-size: 1.4rem;
 }
@@ -90,4 +91,15 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   padding: 1rem!important;
   text-align: center!important;
   color: #FFF!important;
+}
+
+.result-badges{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.result-badges p>span{
+  margin: 0 0 1.5em 0;
 }
