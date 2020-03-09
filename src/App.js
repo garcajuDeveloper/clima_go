@@ -22,13 +22,15 @@ function App() {
   const {city, country } = search;
 
   useEffect(() => {
+
     const requestAPI = async () => {
       if(requestForm){
         const url = `${BASE_URL}${city},${country}&appid=${APPID}`;
 
         const response = await fetch(url);
         const jsonResolved = await response.json();   
-        console.log(jsonResolved);  
+        console.log(jsonResolved);
+        setRequestForm(false);  
       }
     }
     requestAPI();
